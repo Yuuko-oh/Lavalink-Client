@@ -107,6 +107,7 @@ public class LavalinkSocket extends ReusableWebSocket {
     /**
      * Implementation details:
      * The only events extending {@link lavalink.client.player.event.PlayerEvent} produced by the remote server are these:
+     * 0. TrackStartEvent
      * 1. TrackEndEvent
      * 2. TrackExceptionEvent
      * 3. TrackStuckEvent
@@ -117,7 +118,12 @@ public class LavalinkSocket extends ReusableWebSocket {
         LavalinkPlayer player = lavalink.getLink(json.getString("guildId")).getPlayer();
         PlayerEvent event = null;
 
-        switch (json.getString("type")) {
+        switch(json.getString("type")) {
+            case "TrackStartEvent":
+                event = new TrackStartEvent(player,
+                        LavalinkUtil.toAudioTrack(json.getString("track"))
+                );
+                break;
             case "TrackEndEvent":
                 event = new TrackEndEvent(player,
                         LavalinkUtil.toAudioTrackWithData(player, json.getString("track")),
@@ -126,7 +132,7 @@ public class LavalinkSocket extends ReusableWebSocket {
                 break;
             case "TrackExceptionEvent":
                 Exception ex;
-                if (json.has("exception")) {
+                if(json.has("exception")) {
                     JSONObject jsonEx = json.getJSONObject("exception");
                     ex = new FriendlyException(
                             jsonEx.getString("message"),
