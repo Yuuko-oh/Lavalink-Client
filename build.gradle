@@ -44,17 +44,17 @@ ext {
     //@formatter:off
     gradleVersion               = '4.9'
 
-    lavaplayerVersion           = '1.3.50'
+    lavaplayerVersion           = 'bce82c7'
     javaWebSocketVersion        = '1.5.1'
-    slf4jVersion                = '1.7.25'
+    slf4jVersion                = '2.0.0-alpha1'
     jsonOrgVersion              = '20180130'
-    jdaVersion                  = '4.1.1_135'
+    jdaVersion                  = '4.2.0_209'
     spotbugsAnnotationsVersion  = '3.1.3'
     prometheusVersion           = '0.4.0'
 
     junitJupiterVersion         = '5.2.0'
     junitPlatformVersion        = '1.2.0'
-    logbackVersion              = '1.2.3'
+    logbackVersion              = '1.3.0-alpha5'
     unirestVersion              = '1.4.9'
 
     //@formatter:on
@@ -62,7 +62,7 @@ ext {
 
 
 dependencies {
-    compile group: 'com.sedmelluq', name: 'lavaplayer', version: lavaplayerVersion
+    compile group: 'com.github.Devoxin', name: 'lavaplayer', version: lavaplayerVersion
     compile group: 'org.java-websocket', name: 'Java-WebSocket', version: javaWebSocketVersion
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
     compile group: 'org.json', name: 'json', version: jsonOrgVersion
