@@ -108,6 +108,7 @@ public abstract class Lavalink<T extends Link> {
         headers.put("Authorization", password);
         headers.put("Num-Shards", Integer.toString(numShards));
         headers.put("User-Id", userId);
+        headers.put("Client-Name", "Lavalink-Client");
 
         LavalinkSocket socket = new LavalinkSocket(name, this, serverUri, new Draft_6455(), headers);
         socket.connect();
@@ -182,7 +183,7 @@ public abstract class Lavalink<T extends Link> {
     }
 
     void removeDestroyedLink(Link link) {
-        //log.info("Destroyed link for guild " + link.getGuildId());
+        log.debug("Destroyed link for guild " + link.getGuildId());
         links.remove(link.getGuildId());
     }
 
